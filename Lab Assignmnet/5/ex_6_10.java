@@ -1,5 +1,5 @@
 // Author: Hammad Saeedi (@hammadsaedi everywhere)
-// Date and Time: 3 April, 2022 7:25 am
+// Date and Time: time
 // Book: Java How to Program, Late Objects, Global Edition
 // java 17.0.2 2022-01-18 LTS
 // Java(TM) SE Runtime Environment (build 17.0.2+8-LTS-86)
@@ -28,33 +28,29 @@ public class ex_6_10 {
     // main method
     public static void main(String[] args) {
         // Variable declarations
-        double radius, volumn;
+        
 
         // Scanner Object
         Scanner input = new Scanner(System.in);    
 
         // Banner
-        System.out.println("Voulmn Calculator");
+        System.out.println("");
         
-        // Taking radius input
-        System.out.print("Enter radius in decimal point number (Double Data Type): ");
-        radius = input.nextDouble();
+        // Taking input
+        System.out.print("");
+
 
         // Closing Scanner Object
         input.close();
 
-        // Calling sphereVolume method for Volumn Calculation
-        volumn = sphereVolume(radius);
+
 
         // Displaying the result
-        System.out.print("Voulmn = " + volumn);
+        System.out.print("");
     }
 
-    // method to calculate volumn
-    public static double sphereVolume(double radius){
-        // Calculating Volumn of sphere
-        double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-        // return volumn
-        return volume;
+    // method
+    public static void tempMethod(){
+
     }
 }
