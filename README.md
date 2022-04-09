@@ -1,12 +1,4 @@
-<h1 align="center" style="font-size: 52px;" > Java - How to Program</h1>
-
-<div align="center">
-[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#)
-[![GitHub Forks](https://img.shields.io/github/forks/hammadsaedi/Java-How-to-Program?style=social&label=Fork&maxAge=2592000)]
-[![GitHub Issues](https://img.shields.io/github/issues/hammadsaedi/Java-How-to-Program?style=flat&label=Issues&maxAge=2592000)]
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black)](#)
-</div>
-
+<h1 align="center" style="font-size: 52px;" > Java - How to Program?</h1>
 
 
 ## 💻 What's inside?
@@ -44,8 +36,7 @@ Java How to Program, Late Objects, Eleventh Edition, Global Edition by Paul Deit
 </a>
 </div>
 
-You can also follow my GitHub Profile to stay updated:
-
-[![GitHub Follow](https://img.shields.io/badge/Connect-Hammad%20Saeedi-blue.svg?logo=Github&longCache=true&style=social&label=Follow](https://github.com/hammadsaedi)
+<p>You can also follow my GitHub Profile to stay updated:
+@hammadsaedi</p>
 
 If you liked the repo then kindly support it by giving it a star ⭐!
