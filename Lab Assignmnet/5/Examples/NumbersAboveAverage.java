@@ -46,10 +46,9 @@ public class  NumbersAboveAverage{
         // Printing values greater than average.
         System.out.println("The numbers above average are: ");
         for (int j = 0; j < numbers.length; j++) {
-
             if (numbers[j] > mean)
             {
-                System.out.println(j);
+                System.out.println(numbers[j]); /** numbers[j] will print arrays element */
             }
             
         }

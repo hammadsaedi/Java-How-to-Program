@@ -1,3 +1,10 @@
+// Author: Hammad Saeedi (@hammadsaedi everywhere)
+// Date and Time: 12 April 2022 9:20 pm
+// Book: Java How to Program, Late Objects, Global Edition
+// java 17.0.2 2022-01-18 LTS
+// Java(TM) SE Runtime Environment (build 17.0.2+8-LTS-86)
+// Java HotSpot(TM) 64-Bit Server VM (build 17.0.2+8-LTS-86, mixed mode, sharing)
+
 /**
  * Conditionals statement executes based on result which is mostly Boolean Data Type: (True or False); 
  * In Switch-Case Statement, Boolean Expression is not Valid. (Specifically Java, allowed in C - language) 
