@@ -6,10 +6,10 @@
 // Java HotSpot(TM) 64-Bit Server VM (build 17.0.2+8-LTS-86, mixed mode, sharing)
 
 /**
- * Appendable Array
+ * Enhanced Arrays
  * By default, Java Arrays have fixed size which is set during arrays creation.
  * In python, List have extendable size. Means, we can add or remove any element from any index at run time.
- * In this program, Java arrays are bestowed with appendable characteristic of Python List.
+ * In this program, Java arrays are bestowed with characteristic of Python List.
 */
 
 // importing arrays utilities
@@ -24,16 +24,22 @@ public class List {
         // Displaying Array before Appending
         System.out.println(Arrays.toString(array)); // Converting arrays to String to print
 
-        // Appending (n + 1)th element in array (Out of Index Appending)
-        array = append(array, 6); // And Initializing new appended array to previous array reference variable
+        // For testing methods
 
-        // Displaying Array after Appending
+        // Appending (n + 1)th element in array (Out of Index Appending)
+        array = append(array, 6); // And Initializing new appended array to previous array reference variable   
+        array = copy(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(count(array, 0));
+        array = clear(array);
+        array = extend(array, array);
         System.out.println(Arrays.toString(array));  // Converting arrays to String to print
+        System.out.println(count(array, 0));
     }
 
     // Method to append an element at the end of the array
     public static int[] append(int[] array, int number) {
-        // Array creation with size of n + 1 for last element to be appended
+        // new array creation with size of n + 1 for last element to be appended
         int[] appendArray = new int[array.length + 1];
     
         // Copying elements into new array
@@ -47,4 +53,59 @@ public class List {
         // returning appended array
         return appendArray;
     }
+
+    // Method to return an array with all elements removed from array (0 valued element with same size of array)
+    public static int[] clear(int[] array) {
+        // array creation with same size as of array to be cleared
+        int[] clearedArray = new int[array.length];
+
+        // returning cleared array with 0 valued elements
+        return clearedArray;
+    }
+
+    // Method to return copy of array
+    public static int[] copy(int[] array) {
+        // array creation with same size as of array to be copied
+        int[] copiedArray = new int[array.length];
+
+        // Copying array
+        copiedArray = array; 
+
+        // returning cleared array with 0 valued elements
+        return copiedArray;
+    }
+
+    // Method to return number of elements with specific value in an array
+    public static int count(int[] array, int value) {
+        // Variable declarations
+        int numberOfElement = 0, index;
+        
+        // Iterating through element of array
+        for (index = 0; index < array.length; index++){
+            if (array[index] == value) { // if ith element of array is equal to desired value
+                numberOfElement++; // incrementing number of Element
+            }
+        }
+
+        // return number of element with specific value
+        return numberOfElement;
+    }
+
+    // Method to append array with all elements af other array (List Extend Method - Python)
+    public static int[] extend(int[] array1, int[] array2){
+        // Variable declarations
+        int index;
+        int[] extendArray;
+
+        // Copying elements of first array into newly created Extended Array
+        extendArray = copy(array1);
+
+        // for all elements of second array appending into Extended Array
+        for (index = 0; index < array2.length; index++){
+            extendArray = append(extendArray, array2[index]);
+        }
+
+        // returning extended array
+        return extendArray;
+    } 
 }
