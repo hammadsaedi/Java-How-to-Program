@@ -27,14 +27,16 @@ public class List {
         // For testing methods
 
         // Appending (n + 1)th element in array (Out of Index Appending)
-        array = append(array, 6); // And Initializing new appended array to previous array reference variable   
-        array = copy(array);
-        System.out.println(Arrays.toString(array));
-        System.out.println(count(array, 0));
-        array = clear(array);
-        array = extend(array, array);
-        System.out.println(Arrays.toString(array));  // Converting arrays to String to print
-        System.out.println(count(array, 0));
+        // array = append(array, 6); // And Initializing new appended array to previous array reference variable   
+        // array = copy(array);
+        // System.out.println(Arrays.toString(array));
+        // System.out.println(count(array, 0));
+        // array = clear(array);
+        // array = extend(array, array);
+        // array = insert(array, 11, 4);
+        // System.out.println(Arrays.toString(array));  // Converting arrays to String to print
+        // System.out.println(count(array, 0));
+        // System.out.println(index(array, 0));
     }
 
     // Method to append an element at the end of the array
@@ -107,5 +109,44 @@ public class List {
 
         // returning extended array
         return extendArray;
-    } 
+    }
+
+    // Method to return the index of the first element with the specified value
+    public static int index(int[] array, int value){
+        // Variable declarations
+        int index;
+
+        // Iterating through element of array
+        for (index = 0; index < array.length; index++){
+            if (array[index] == value){ // If any array element contains desired value
+                return index; // return's elements index
+            }
+        }
+
+        // Return -1, in case no element have such value 
+        return  -1;
+    }
+
+    // // Method to add an element at the specified position
+    // public static int[] insert(int[] array, int number, int index) {
+    //     // new array creation with size of n + 1 for last element to be appended
+    //     int[] updatedArray = new int[array.length + 1];
+    
+        
+    //     // Iterating through element of updated array
+    //     for (int i = 0, j = 0; i < array.length; i++) {
+    //         System.out.println(array[j]); 
+    //         if (i == index){ // If index where elements is to be inserted reach 
+    //             updatedArray[i] = number; // assigning desired value
+    //             System.out.println("x");
+    //         } else { // Copying other elements
+    //             updatedArray[i] = array[j];
+    //             // System.out.println(array[j]);
+    //             j++; // for previous array's index; increment only if element is copied
+    //         }      
+    //     }
+
+    //     // returning updated array
+    //     return updatedArray;
+    // }
 }
