@@ -33,8 +33,8 @@ public class List {
         // System.out.println(count(array, 0));
         // array = clear(array);
         // array = extend(array, array);
-        // array = insert(array, 11, 4);
-        // System.out.println(Arrays.toString(array));  // Converting arrays to String to print
+        array = insert(array, 11, 9);
+        System.out.println(Arrays.toString(array));  // Converting arrays to String to print
         // System.out.println(count(array, 0));
         // System.out.println(index(array, 0));
     }
@@ -127,26 +127,32 @@ public class List {
         return  -1;
     }
 
-    // // Method to add an element at the specified position
-    // public static int[] insert(int[] array, int number, int index) {
-    //     // new array creation with size of n + 1 for last element to be appended
-    //     int[] updatedArray = new int[array.length + 1];
-    
+    // Method to add an element at the specified position
+    public static int[] insert(int[] array, int number, int index) {
         
-    //     // Iterating through element of updated array
-    //     for (int i = 0, j = 0; i < array.length; i++) {
-    //         System.out.println(array[j]); 
-    //         if (i == index){ // If index where elements is to be inserted reach 
-    //             updatedArray[i] = number; // assigning desired value
-    //             System.out.println("x");
-    //         } else { // Copying other elements
-    //             updatedArray[i] = array[j];
-    //             // System.out.println(array[j]);
-    //             j++; // for previous array's index; increment only if element is copied
-    //         }      
-    //     }
+        final int size; // size of new array
 
-    //     // returning updated array
-    //     return updatedArray;
-    // }
+        if (index >= array.length){ // in case, element is to be inserted in index higher than last-element-index
+            size = index + 1; 
+            // array.length + (index - (array.length - 1)); --->  Previous-Array's-Length + (New-Array-Index - Highest-Index-of-Previous-Array) ---> // 5 + 5 - 5 + 1 ---> 6
+        } else { // + 1 for new element to be inserted
+            size = array.length + 1;
+        }
+        
+        // creating new array with appropriate size
+        int[] updatedArray = new int[size];
+        
+        // Iterating through element of updated array
+        for (int i = 0, j = 0; i < updatedArray.length; i++) {
+            if (i == index){ // when index where elements is to be inserted reach 
+                updatedArray[i] = number; // assigning desired value
+            } else if (j < array.length){ // Copying other elements
+                updatedArray[i] = array[j];
+                j++; // for previous array's index; increment only if element is copied
+            }      
+        }
+
+        // returning updated array
+        return updatedArray;
+    }
 }
