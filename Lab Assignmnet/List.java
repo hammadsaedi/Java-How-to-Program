@@ -25,18 +25,9 @@ public class List {
         System.out.println(Arrays.toString(array)); // Converting arrays to String to print
 
         // For testing methods
-
-        // Appending (n + 1)th element in array (Out of Index Appending)
-        // array = append(array, 6); // And Initializing new appended array to previous array reference variable   
-        // array = copy(array);
-        // System.out.println(Arrays.toString(array));
-        // System.out.println(count(array, 0));
-        // array = clear(array);
-        // array = extend(array, array);
-        array = insert(array, 11, 9);
-        System.out.println(Arrays.toString(array));  // Converting arrays to String to print
-        // System.out.println(count(array, 0));
-        // System.out.println(index(array, 0));
+        /**
+         * 
+         */
     }
 
     // Method to append an element at the end of the array
@@ -56,10 +47,10 @@ public class List {
         return appendArray;
     }
 
-    // Method to return an array with all elements removed from array (0 valued element with same size of array)
+    // Method to return an empty array
     public static int[] clear(int[] array) {
-        // array creation with same size as of array to be cleared
-        int[] clearedArray = new int[array.length];
+        // array creation with zero elements
+        int[] clearedArray = new int[0];
 
         // returning cleared array with 0 valued elements
         return clearedArray;
@@ -155,4 +146,64 @@ public class List {
         // returning updated array
         return updatedArray;
     }
+
+    // Method to Remove the element at the specified position
+    public static int[] pop(int[] array, int index) {        
+        // creating new array with appropriate size
+        int[] updatedArray = new int[array.length - 1];
+        
+        // Iterating through element of parent array
+        for (int i = 0, j = 0; i < array.length; i++) {
+            if (i == index){ // when index where elements to be remove reach 
+                continue; // skip iterations
+            } else { // Copying other elements
+                updatedArray[j] = array[i];
+                j++; // for new array's index; increment only if element is copied
+            }      
+        }
+
+        // returning updated array
+        return updatedArray;
+    }
+
+    // Method to Remove the item with the specified value
+    public static int[] remove(int[] array, int value) {  
+        // Variable declaration
+        int count;
+
+        // Calculating number of element with desired value
+        count = count(array, value);
+
+        // creating new array with appropriate size
+        int[] updatedArray = new int[array.length - count];
+        
+        // Iterating through element of parent array
+        for (int i = 0, j = 0; i < array.length; i++) {
+            if (array[i] == value){ // when valued element to be remove reach 
+                continue; // skip iterations
+            } else { // Copying other elements
+                updatedArray[j] = array[i];
+                j++; // for new array's index; increment only if element is copied
+            }      
+        }
+
+        // returning updated array
+        return updatedArray;
+    }
+
+    // Method to reverse the order of array
+    public static int[] reverse(int[] array) {  
+        // creating new array with appropriate size
+        int[] updatedArray = new int[array.length];
+        
+        // Iterating through element of parent array
+        for (int i = 0; i < array.length; i++) {
+            updatedArray[i] = array[(array.length - 1) - i]; // reverse indexing
+        }
+
+        // returning updated array
+        return updatedArray;
+    }
+
+
 }
