@@ -9,9 +9,6 @@
  * 6.16 (Using the Enhanced for Statement) Write an application that uses an enhanced for statement to find the absolute values of int numbers passed by command-line arguments.
 */ 
 
-// Importing Arrays class
-import java.util.Arrays;
-
 public class ex_6_16 {
     // main method
     public static void main(String[] args) {
@@ -27,7 +24,7 @@ public class ex_6_16 {
             for (String argument : args){
                 try { // numeric method works on numeric arguments (integer), there can be a case, user pass non-numeric arguments. 
                     // Storing numeric argument in number
-                    number =  Integer.parseDouble(argument);
+                    number =  Integer.parseInt(argument);
                     // Calculating absolute value
                     absolute = Math.abs(number);
                     // Displaying result
