@@ -41,8 +41,11 @@ public class ex_6_12 {
             numbers[index] = -1; 
         }
 
+        // Initializing Index to 0
+        index = 0;
+
         // Taking user input
-        for (index = 0; index < numbers.length;){
+        while (index < numbers.length){
             System.out.print("Enter number: ");
             number = input.nextInt();
 
