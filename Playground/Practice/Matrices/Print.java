@@ -21,7 +21,7 @@ public class Print {
 
         // initializing matrices with random number valued elements
         matrix = RandomMatrix.randomMatrix(rows, columns);
-
+        
         // output
         System.out.println("A:"); print(matrix); // displaying first matrix
     }
