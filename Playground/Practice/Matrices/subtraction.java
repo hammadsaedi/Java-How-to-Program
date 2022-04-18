@@ -8,9 +8,6 @@
  * Subtraction of two Matrices
 */
 
-// Secure Random Class
-import java.security.SecureRandom;
-
 public class subtraction {
     // main method
     public static void main(String[] args){
@@ -23,16 +20,16 @@ public class subtraction {
         columns = 2;
 
         // initializing matrices with random number valued elements
-        matrix1 = randomMatrix(rows, columns);
-        matrix2 = randomMatrix(rows, columns);
+        matrix1 = RandomMatrix.randomMatrix(rows, columns);
+        matrix2 = RandomMatrix.randomMatrix(rows, columns);
 
         // subtraction  of matrices
         answer = matrixSubtraction (matrix1, matrix2);
 
         // output
-        System.out.println("A:"); print(matrix1); // displaying first matrix
-        System.out.println("\nB:"); print(matrix2); // displaying second matrix
-        System.out.println("\nA + B:"); print(answer); // displaying resultant matrix
+        System.out.println("A:"); Print.print(matrix1); // displaying first matrix
+        System.out.println("\nB:"); Print.print(matrix2); // displaying second matrix
+        System.out.println("\nA + B:"); Print.print(answer); // displaying resultant matrix
     }
 
     // method to return subtraction  of two matrices
@@ -57,43 +54,5 @@ public class subtraction {
 
         // returning matrix after subtraction 
         return matrix;
-    }
-
-    // method to return random n-by-m matrix
-    public static int[][] randomMatrix(int rows, int columns){
-        // variable declaration
-        int i, j;
-        int[][] matrix;
-
-        // SecureRandom Class' Object
-        SecureRandom random = new SecureRandom();
-
-        // 2D Array (Matrix) creation with appropriate size
-        matrix = new int[rows][columns];
-
-        // assigning matrix with random values
-        for (i = 0; i < matrix.length; i++){ // iteration through rows
-            for (j = 0; j < matrix[i].length; j++){ // iterations through column
-                matrix[i][j] = random.nextInt(100); // assigning random number from 0 to 99 
-            }
-        }
-
-        // returning random matrix
-        return matrix;
-    }
-
-    // method to print matrix
-    public static void print(int[][] matrix){
-        // variable declaration
-        int i, j;
-
-        // printing matrix
-        for (i = 0; i < matrix.length; i++){ // iteration through rows
-            System.out.printf("%s","| "); // for border
-            for (j = 0; j < matrix[i].length; j++){ // iterations through column
-                System.out.printf("%-5d",matrix[i][j]); // printing individual elements
-            }
-            System.out.printf("%s%n","| "); // for border
-        }
     }
 }
