@@ -28,7 +28,7 @@ public class program19 {
 
         Print.print(A);
 
-        // Print.print(product);
+        Print.print(product);
     }
 
     // method to return product of matrix
