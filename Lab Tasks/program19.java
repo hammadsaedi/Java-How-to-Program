@@ -22,13 +22,16 @@ public class program19 {
 
 
         Print.print(A);
+        Print.print(sum);
+        Print.print(diff);
+        Print.print(product);
 
         // diagonal swapping
         A = diagonalSwapping(A);
 
         Print.print(A);
 
-        Print.print(product);
+        
     }
 
     // method to return product of matrix

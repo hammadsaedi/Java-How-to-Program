@@ -7,22 +7,27 @@ public class MyFrame extends JFrame {
     private JButton enterButton, saveButton;
     
     public MyFrame(){
-        nameLabel = new JLabel("Name");
-        emailLabel = new JLabel("Email");
-        phoneLabel = new JLabel("Phone");
+        nameLabel = new JLabel("Name:");
+        emailLabel = new JLabel("Email:");
+        phoneLabel = new JLabel("Phone:");
 
         nameTextField = new JTextField(20);
-        emailTextField = new JTextField(40);
-        phoneTextField = new JTextField(60);
+        emailTextField = new JTextField(20);
+        phoneTextField = new JTextField(20);
 
         enterButton =  new JButton("Enter"); 
         saveButton =  new JButton("Save"); 
 
+        // adds
         add(nameLabel);
-        add(emailLabel);
-        add(phoneLabel);
         add(nameTextField);
+
+        add(emailLabel);
+        add(emailTextField);
+
+        add(phoneLabel);
         add(phoneTextField);
+
         add(enterButton);
         add(saveButton);
 
