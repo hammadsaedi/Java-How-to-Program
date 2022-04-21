@@ -11,12 +11,6 @@
  *  -Kelvin
 */
 
-
-// Kelvin Field is not working well 
-// - Entering first time throw exception
-// - Multiple Enters adds previous entries too
-// Nothing like this is other fields
-
 import javax.swing.*;  
 import java.awt.*;
 
@@ -24,6 +18,7 @@ public class temperature extends JFrame {
     // swing components
     static JLabel celsiusLabel, fahrenheitLabel, kelvinLabel; // label
     static JTextField celsiusField, fahrenheitField, kelvinField; // fields
+    static JButton clearButton; // button
 
     // constructor
     temperature(){  
@@ -34,6 +29,7 @@ public class temperature extends JFrame {
         fahrenheitField = new JTextField(20);
         kelvinLabel = new JLabel("Kelvin");
         kelvinField = new JTextField(20);
+        clearButton = new JButton("Clear");
 
         // exit on close
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -48,6 +44,12 @@ public class temperature extends JFrame {
         add(fahrenheitField);
         add(kelvinLabel);
         add(kelvinField);
+        add(clearButton);
+
+        // Setting default values
+        celsiusField.setText("0");
+        fahrenheitField.setText("32");
+        kelvinField.setText("273.15");
 
         // celsius field text listener (Pressing Enter is required)
         celsiusField.addActionListener(new java.awt.event.ActionListener() {
@@ -69,13 +71,16 @@ public class temperature extends JFrame {
                 kelvinField(evt);
             }
         });
-        
-        //using no layout managers  
-        setLayout(new FlowLayout());
-        
-        //making the frame visible  
-        setVisible(true);
 
+        // clear button listener (Pressing Enter is required)
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButton(evt);
+            }
+        });
+
+        setLayout(new FlowLayout());
+        setVisible(true);
         pack();
     }  
 
@@ -144,7 +149,7 @@ public class temperature extends JFrame {
         String text;
 
         // fetching and storing written text on screen
-        text = fahrenheitField.getText(); 
+        text = kelvinField.getText(); 
 
         // converting text into double
         kelvin = Double.parseDouble(text);
@@ -164,8 +169,15 @@ public class temperature extends JFrame {
 
         // displaying on fahrenheit text field
         fahrenheitField.setText(text);
-}
+    }
 
+    // method to listen clear button
+    private static void clearButton(java.awt.event.ActionEvent evt){
+        // Setting default values
+        celsiusField.setText("0");
+        fahrenheitField.setText("32");
+        kelvinField.setText("273.15");
+    }
 
     // main method
     public static void main(String[] args) {  
