@@ -11,45 +11,83 @@
  *  -Kelvin
 */
 
-import javax.swing.*;  
+import javax.swing.*;
 import java.awt.*;
 
 public class temperature extends JFrame {  
     // swing components
+    static JPanel panel1, panel2, panel3;
     static JLabel celsiusLabel, fahrenheitLabel, kelvinLabel; // label
     static JTextField celsiusField, fahrenheitField, kelvinField; // fields
-    static JButton clearButton; // button
+    static JButton clearButton, closeButton; // button
+
+    // color
+    static Color black = new Color(0, 0, 0);
+    static Color white = new Color(255, 255, 255);
+    static Color buttonColor = new Color(60, 59, 57);
+    static Color hoverColor = new Color(166, 166, 166);
 
     // constructor
     temperature(){  
         //creating instance of swing components
-        celsiusLabel = new JLabel("Celsius");
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        panel3 = new JPanel();
+        celsiusLabel = new JLabel("Celsius"); 
         celsiusField = new JTextField(20);
         fahrenheitLabel = new JLabel("Fahrenheit");
         fahrenheitField = new JTextField(20);
         kelvinLabel = new JLabel("Kelvin");
         kelvinField = new JTextField(20);
         clearButton = new JButton("Clear");
-
+        closeButton = new JButton("X");
         // exit on close
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         // Title Bar
         setTitle("Temperature Converter");
             
-        // Adding components in Frame
-        add(celsiusLabel);
-        add(celsiusField);
-        add(fahrenheitLabel);
-        add(fahrenheitField);
-        add(kelvinLabel);
-        add(kelvinField);
-        add(clearButton);
+        // Adding panel in Frame
+        add(panel1);
+
+        // Adding components in Panel
+        panel1.add(panel2);
+        panel1.add(closeButton);
+        panel1.add(celsiusLabel);
+        panel1.add(celsiusField);
+        panel1.add(fahrenheitLabel);
+        panel1.add(fahrenheitField);
+        panel1.add(kelvinLabel);
+        panel1.add(kelvinField);
+        panel1.add(panel3);
+        panel1.add(clearButton);
+        
+
+        // Alignment
+        celsiusLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        fahrenheitLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        kelvinLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        // button
+        clearButton.setFocusPainted(false);
+        clearButton.setBorderPainted(false);
+        clearButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        closeButton.setFocusPainted(false);
+        closeButton.setBorderPainted(false);
+        closeButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+
+        // fields
+        celsiusField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        fahrenheitField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        kelvinField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
 
         // Setting default values
         celsiusField.setText("0");
         fahrenheitField.setText("32");
         kelvinField.setText("273.15");
+        
+        
+        // -------------- Event Listeners ------------------------
 
         // celsius field text listener (Pressing Enter is required)
         celsiusField.addActionListener(new java.awt.event.ActionListener() {
@@ -72,15 +110,77 @@ public class temperature extends JFrame {
             }
         });
 
-        // clear button listener (Pressing Enter is required)
+        // clear button listener
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButton(evt);
             }
         });
 
-        setLayout(new FlowLayout());
+        // close button listener
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                dispose();
+            }
+        });
+
+
+        // hover effect
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearButton.setForeground(black);
+                clearButton.setBackground(hoverColor);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearButton.setBackground(buttonColor);
+                clearButton.setForeground(white);
+            }
+        });
+
+        closeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeButton.setForeground(black);
+                closeButton.setBackground(Color.RED);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeButton.setBackground(buttonColor);
+                closeButton.setForeground(white);
+                // clearButton.setBackground(UIManager.getColor("control"));
+            }
+        });
+
+
+        // -------------- Design ------------------------
+        panel1.setBackground(black);
+        panel2.setBackground(buttonColor);
+        panel3.setBackground(black);
+
+        celsiusLabel.setForeground(white);
+        celsiusField.setBackground(black);
+        celsiusField.setForeground(white);
+        
+        fahrenheitLabel.setForeground(white);
+        fahrenheitField.setBackground(black);
+        fahrenheitField.setForeground(white);
+        
+        kelvinLabel.setForeground(white);
+        kelvinField.setBackground(black);
+        kelvinField.setForeground(white);
+
+        clearButton.setBackground(buttonColor);
+        clearButton.setForeground(white);
+
+        closeButton.setBackground(buttonColor);
+        closeButton.setForeground(white);
+
+        panel1.setLayout(new GridLayout(5,2, 0, 0));
+        
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setVisible(true);
+
+        // setVisible(true);
         pack();
     }  
 
@@ -97,7 +197,7 @@ public class temperature extends JFrame {
         celsius = Double.parseDouble(text);
         
         // temperature conversion
-        fahrenheit = celsius * 1.8 + 32;
+        fahrenheit = celsius * (9.0/5.0) + 32;
         kelvin = celsius + 273.15;
 
         // String for casting
@@ -126,7 +226,7 @@ public class temperature extends JFrame {
         fahrenheit = Double.parseDouble(text);
         
         // temperature conversion
-        celsius = (fahrenheit - 32) * 1.8;
+        celsius = (fahrenheit - 32) * (5.0/9.0);
         kelvin = celsius + 273.15;
 
         // String for celsius casting
@@ -156,7 +256,7 @@ public class temperature extends JFrame {
         
         // temperature conversion
         celsius = kelvin - 273.15;
-        fahrenheit = celsius * 1.8 + 32;
+        fahrenheit = celsius * (9.0/5.0) + 32;
 
         // String casting for celsius
         text = "" + celsius;
