@@ -13,13 +13,15 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class temperature extends JFrame {  
     // swing components
     static JPanel panel1, panel2, panel3;
     static JLabel celsiusLabel, fahrenheitLabel, kelvinLabel; // label
     static JTextField celsiusField, fahrenheitField, kelvinField; // fields
-    static JButton clearButton, closeButton; // button
+    static hButton clearButton, closeButton, minimizeButton; // button
 
     // color
     static Color black = new Color(0, 0, 0);
@@ -39,10 +41,9 @@ public class temperature extends JFrame {
         fahrenheitField = new JTextField(20);
         kelvinLabel = new JLabel("Kelvin");
         kelvinField = new JTextField(20);
-        clearButton = new JButton("Clear");
-        closeButton = new JButton("X");
-        // exit on close
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        clearButton = new hButton("Clear", this);
+        closeButton = new hButton("X", this);
+        minimizeButton = new hButton("-", this);
         
         // Title Bar
         setTitle("Temperature Converter");
@@ -51,7 +52,7 @@ public class temperature extends JFrame {
         add(panel1);
 
         // Adding components in Panel
-        panel1.add(panel2);
+        panel1.add(minimizeButton);
         panel1.add(closeButton);
         panel1.add(celsiusLabel);
         panel1.add(celsiusField);
@@ -67,14 +68,6 @@ public class temperature extends JFrame {
         celsiusLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         fahrenheitLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         kelvinLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        // button
-        clearButton.setFocusPainted(false);
-        clearButton.setBorderPainted(false);
-        clearButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-        closeButton.setFocusPainted(false);
-        closeButton.setBorderPainted(false);
-        closeButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
         // fields
         celsiusField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         fahrenheitField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -117,38 +110,6 @@ public class temperature extends JFrame {
             }
         });
 
-        // close button listener
-        closeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                dispose();
-            }
-        });
-
-
-        // hover effect
-        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                clearButton.setForeground(black);
-                clearButton.setBackground(hoverColor);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                clearButton.setBackground(buttonColor);
-                clearButton.setForeground(white);
-            }
-        });
-
-        closeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                closeButton.setForeground(black);
-                closeButton.setBackground(Color.RED);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                closeButton.setBackground(buttonColor);
-                closeButton.setForeground(white);
-                // clearButton.setBackground(UIManager.getColor("control"));
-            }
-        });
-
 
         // -------------- Design ------------------------
         panel1.setBackground(black);
@@ -167,20 +128,18 @@ public class temperature extends JFrame {
         kelvinField.setBackground(black);
         kelvinField.setForeground(white);
 
-        clearButton.setBackground(buttonColor);
-        clearButton.setForeground(white);
-
-        closeButton.setBackground(buttonColor);
-        closeButton.setForeground(white);
 
         panel1.setLayout(new GridLayout(5,2, 0, 0));
         
+
+        // Frame customizations
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        // setUndecorated(true);
         setVisible(true);
-
-        // setVisible(true);
+        // setLocation(300, 300);
+        // setDefaultLookAndFeelDecorated(true);
+        // setLocationRelativeTo(null);
         pack();
     }  
 
@@ -277,6 +236,29 @@ public class temperature extends JFrame {
         celsiusField.setText("0");
         fahrenheitField.setText("32");
         kelvinField.setText("273.15");
+    }
+
+    public static class FrameDragListener extends MouseAdapter {
+
+        private final JFrame frame;
+        private Point mouseDownCompCoords = null;
+
+        public FrameDragListener(JFrame frame) {
+            this.frame = frame;
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            mouseDownCompCoords = null;
+        }
+
+        public void mousePressed(MouseEvent e) {
+            mouseDownCompCoords = e.getPoint();
+        }
+
+        public void mouseDragged(MouseEvent e) {
+            Point currCoords = e.getLocationOnScreen();
+            frame.setLocation(currCoords.x - mouseDownCompCoords.x, currCoords.y - mouseDownCompCoords.y);
+        }
     }
 
     // main method
