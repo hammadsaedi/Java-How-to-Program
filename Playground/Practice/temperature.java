@@ -135,7 +135,7 @@ public class temperature extends JFrame {
         // Frame customizations
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
         // setLocation(300, 300);
         // setDefaultLookAndFeelDecorated(true);
