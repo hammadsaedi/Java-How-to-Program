@@ -7,12 +7,18 @@ import java.awt.*;
 
 
 public class display extends JTextField {
+    // colors
+    Color backgroundColor = new Color(44, 44, 44);
+    Color foregroundColor = new Color(191, 191, 191);
+
     // constructor
     public display(){
         // default text
-        setText("0");
-        setForeground(Color.WHITE);
-        setBackground(Color.BLACK);
+        // setText("0123456");
+        setForeground(foregroundColor);
+        setBackground(backgroundColor);
+
+
 
 
         // // design

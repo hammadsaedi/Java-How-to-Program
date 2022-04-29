@@ -52,7 +52,7 @@ public class hButton extends JButton {
                     window.setState(JFrame.ICONIFIED);
                 }
             });
-            setMnemonic('M');
+            setMnemonic('Y');
         }
     }
 }
