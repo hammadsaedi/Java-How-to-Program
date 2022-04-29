@@ -6,30 +6,36 @@ import javax.swing.*;
 
 public class calculator extends JFrame{
     // buttons container
+    display screen;
     buttonsContainer container;
-    public static display screen;
+    numberSystemPanel numbers = new numberSystemPanel();
 
     // constructor
     calculator(){
         // screen
-        screen = new display();
+        screen = new display();      
+
         // button container
         container = new buttonsContainer(screen); 
 
         // adding components in calculator
         add(screen);
+        add(numbers);
         add(container);
 
         
         // absolute sizing
         screen.setBounds(0, 0, 330, 50);
-        container.setBounds(0, 50, 330, 430);
+        numbers.setBounds(0, 55, 330, 125);
+        container.setBounds(0, 180, 330, 300);
 
         // calculator (JFrame) design
         // setLayout(new FlowLayout());
-        // setLayout(new GridLayout(2,1, 0, 0));
 
         setLayout(null);
+
+        setUndecorated(true);
+        setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
 
         // getContentPane();  
         setResizable(false);

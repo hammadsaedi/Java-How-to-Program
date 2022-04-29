@@ -7,50 +7,57 @@ public class buttonsContainer extends JPanel {
     private static final long serialVersionUID = 1L;
 
     // numeric buttons
-    static private inputButton button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonA, buttonB, buttonC, buttonD, buttonE, buttonF;
-
+    static inputButton[] button = new inputButton[16]; 
     // color
     
     // constructor
     public buttonsContainer(JTextField screen){
-        // numeric buttons
-        button0 = new inputButton("0", screen);
-        button1 = new inputButton("1", screen);
-        button2 = new inputButton("2", screen);
-        button3 = new inputButton("3", screen);
-        button4 = new inputButton("4", screen);
-        button5 = new inputButton("5", screen);
-        button6 = new inputButton("6", screen);
-        button7 = new inputButton("7", screen);
-        button8 = new inputButton("8", screen);
-        button9 = new inputButton("9", screen);
-        buttonA = new inputButton("A", screen);
-        buttonB = new inputButton("B", screen);
-        buttonC = new inputButton("C", screen);
-        buttonD = new inputButton("D", screen);
-        buttonE = new inputButton("E", screen);
-        buttonF = new inputButton("F", screen);
+        // creating buttons
+        for (int i = 0; i < button.length; i++){
+            button[i] = new inputButton(Integer.toHexString(i), screen);
+        }
 
-        // adding buttons in buttons container
-        add(buttonA);
-        add(button7);
-        add(button8);
-        add(button9);
-        add(buttonB);
-        add(button4);
-        add(button5);
-        add(button6);
-        add(buttonC);
-        add(button1);
-        add(button2);
-        add(button3);
-        add(buttonD);
-        add(buttonE);
-        add(buttonF);
-        add(button0);
-
+        // adding buttons
+        for (int i = button.length - 1; i >= 0; i--){
+            add(button[i]);
+        }
+        
         // button container designing
         setBackground(Color.BLACK);
-        setLayout(new GridLayout(4,4, 1, 1));
+        setLayout(new GridLayout(6,3, 1, 1));
+        hexMode();
     }
+
+    public static void hexMode(){
+        for (int i = 0; i < button.length; i++){
+            button[i].setEnabled(true);
+            // System.out.print(i);
+        }
+    }
+
+    public static void decMode(){
+        for (int i = button.length -1; i > 9; i--){
+            button[i].setEnabled(false);
+        }
+        for (int i = 0; i <= 9; i++){
+            button[i].setEnabled(true);
+        }
+    }
+
+    public static void octMode(){
+        for (int i = button.length -1; i > 7; i--){
+            button[i].setEnabled(false);
+            System.out.print(i);
+        }
+        for (int i = 0; i <= 7; i++){
+            button[i].setEnabled(true);
+        }
+    }
+
+    public static void binMode(){
+        for (int i = button.length - 1; i > 1; i--){
+            button[i].setEnabled(false);
+        }
+    }
+
 }

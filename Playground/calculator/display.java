@@ -14,12 +14,12 @@ public class display extends JTextField {
     // constructor
     public display(){
         // default text
-        // setText("0123456");
+        setText("0");
         setForeground(foregroundColor);
         setBackground(backgroundColor);
+        // setOpaque(false);
 
-
-
+        setEditable(false);
 
         // // design
         // attributeSet = new SimpleAttributeSet();  

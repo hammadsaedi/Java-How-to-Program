@@ -7,7 +7,7 @@ import java.awt.*;
 public class inputButton extends JButton {
     /* declaration of class level variables */
     // awt colors
-    Color buttonColor = new Color(60, 60, 60), hoveColor = new Color(166, 166, 166);;
+    Color buttonColor = new Color(60, 60, 60), hoveColor = new Color(166, 166, 166);
 
     // constructor method
     public inputButton(String text, JTextField screen) {
