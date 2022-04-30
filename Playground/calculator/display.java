@@ -21,13 +21,6 @@ public class display extends JTextField {
 
         setEditable(false);
 
-        // // design
-        // attributeSet = new SimpleAttributeSet();  
-        
-        // StyleConstants.setBold(attributeSet, true);  
-        // StyleConstants.setItalic(attributeSet, true);  
-        // StyleConstants.setForeground(attributeSet, Color.WHITE);  
-        // StyleConstants.setBackground(attributeSet, Color.BLACK); 
     }
     
 }

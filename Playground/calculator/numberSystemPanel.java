@@ -12,21 +12,23 @@ public class numberSystemPanel extends JPanel {
 
     
     // swing components
-    JRadioButton HEX, DEC, OCT, BIN;
-    JTextField hexField, decField, octField, binField;
+    static JRadioButton[] NUM = new JRadioButton[4];
+    static JTextField[] Field = new JTextField[4];
     ButtonGroup buttonGroup = new ButtonGroup();   
     
     // constructor
     public numberSystemPanel(){
-        // label = new JLabel(text);
-        hexField = new JTextField();
-        decField = new JTextField();
-        octField = new JTextField();
-        binField = new JTextField();
-        HEX = new JRadioButton("HEX");
-        DEC = new JRadioButton("DEC", true);
-        OCT = new JRadioButton("OCT");
-        BIN = new JRadioButton("BIN");
+        // Radio Buttons
+        NUM[0] = new JRadioButton("HEX");
+        NUM[1] = new JRadioButton("DEC", true);
+        NUM[2] = new JRadioButton("OCT");
+        NUM[3] = new JRadioButton("BIN");
+
+        // Text Fields
+        for (int i = 0; i < Field.length; i++){
+            Field[i] = new JTextField();
+        }
+
 
         // field.setForeground(foregroundColor);
         
@@ -36,19 +38,13 @@ public class numberSystemPanel extends JPanel {
         // setForeground(foregroundColor);
         setBackground(backgroundColor);
 
-        add(HEX);
-        add(hexField);
-        add(DEC);
-        add(decField);
-        add(OCT);
-        add(octField);
-        add(BIN);
-        add(binField);
+        // adding radio button and text fields in Panel and further more adding radio buttons in Button Group (for selection of one option at a time)
+        for (int i = 0; i < NUM.length && i < Field.length; i++){
+            add(NUM[i]);
+            buttonGroup.add(NUM[i]);
+            add(Field[i]);
+        }
 
-        buttonGroup.add(HEX);
-        buttonGroup.add(DEC);
-        buttonGroup.add(OCT);
-        buttonGroup.add(BIN);
 
         // addMouseListener(new java.awt.event.MouseAdapter() {
         //     public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -63,32 +59,53 @@ public class numberSystemPanel extends JPanel {
         //     }
         // });
 
-
-        HEX.addActionListener(new java.awt.event.ActionListener() {
+        // HEX Mode
+        NUM[0].addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                // Screen Text (that's HEX)
                 buttonsContainer.hexMode();
+                String screenText = calculator.screen.getText();
+                
+                Field[0].setText(screenText);
+                
+                // Converting into Decimal
+                int decimal = Integer.parseInt(screenText,16);
+                
+                String DEC = Integer.toString(decimal);
+                Field[1].setText(DEC);
+                
+                // Converting into Octal
+                String OCT = Integer.toOctalString(decimal);
+                Field[2].setText(OCT);
+
+                // Converting into Octal
+                String BIN = Integer.toBinaryString(decimal);
+                Field[3].setText(BIN);
+                
             }
         });
 
-        DEC.addActionListener(new java.awt.event.ActionListener() {
+        // DEC Mode
+        NUM[1].addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 buttonsContainer.decMode();
             }
         });
 
-        OCT.addActionListener(new java.awt.event.ActionListener() {
+        // OCT Mode
+        NUM[2].addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 buttonsContainer.octMode();
             }
         });
 
-        BIN.addActionListener(new java.awt.event.ActionListener() {
+        // BIN Mode
+        NUM[3].addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 buttonsContainer.binMode();
             }
         });
 
-        // buttonsContainer.binMode();
 
         // HEX.setBounds(0, 50, 50, 50);
         // hexField.setBounds(0, 50, 300, 50);
@@ -99,7 +116,22 @@ public class numberSystemPanel extends JPanel {
         // BIN.setBounds(0, 0, 200, 50);
         // binField.setBounds(0, 200, 300, 50);
 
-        setLayout(new FlowLayout());
+        String screenText = calculator.screen.getText();
+        // System.out.print(screenText);
+
+        buttonGroup.getSelection();
+        if (NUM[0].isSelected()) {
+            // Screen Text (that's HEX)
+            // String screenText = calculator.screen.getText();
+
+            System.out.print(screenText);
+
+            // Converting into Decimal
+            String DEC = Integer.toString(Integer.parseInt(screenText,16));
+            numberSystemPanel.Field[1].setText(DEC);
+        }
+
+        setLayout(new GridLayout(4,2, 1, 1));
 
  
     }

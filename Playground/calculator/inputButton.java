@@ -40,9 +40,18 @@ public class inputButton extends JButton {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 // previous text
                 String screenText = screen.getText();
+                // default text
+                String defaultText = buttonsContainer.button[0].getText();
+
+                if (screenText.equals(defaultText)) {
+                    // writing button text to screen
+                    screen.setText(getText());
+                } 
+                else {
+                    // concatenating button's text to existing screen text
+                    screen.setText(screenText + getText());
+                }
                 
-                // concatenating button's text to screen
-                screen.setText(screenText + getText());
             }
         });
     }

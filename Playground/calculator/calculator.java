@@ -6,14 +6,14 @@ import javax.swing.*;
 
 public class calculator extends JFrame{
     // buttons container
-    display screen;
+    static display screen = new display();
     buttonsContainer container;
     numberSystemPanel numbers = new numberSystemPanel();
 
     // constructor
     calculator(){
         // screen
-        screen = new display();      
+        // screen = new display();      
 
         // button container
         container = new buttonsContainer(screen); 
@@ -28,6 +28,8 @@ public class calculator extends JFrame{
         screen.setBounds(0, 0, 330, 50);
         numbers.setBounds(0, 55, 330, 125);
         container.setBounds(0, 180, 330, 300);
+
+        // new numberSystemConversion();
 
         // calculator (JFrame) design
         // setLayout(new FlowLayout());

@@ -25,7 +25,9 @@ public class buttonsContainer extends JPanel {
         // button container designing
         setBackground(Color.BLACK);
         setLayout(new GridLayout(6,3, 1, 1));
-        hexMode();
+
+        // default
+        decMode();
     }
 
     public static void hexMode(){
@@ -47,7 +49,6 @@ public class buttonsContainer extends JPanel {
     public static void octMode(){
         for (int i = button.length -1; i > 7; i--){
             button[i].setEnabled(false);
-            System.out.print(i);
         }
         for (int i = 0; i <= 7; i++){
             button[i].setEnabled(true);
