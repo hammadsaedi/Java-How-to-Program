@@ -3,20 +3,14 @@ package calculator;
 import java.awt.*;
 import javax.swing.*;
 
-
 public class calculator extends JFrame{
     // buttons container
-    static display screen = new display();
-    buttonsContainer container;
-    numberSystemPanel numbers = new numberSystemPanel();
+    display screen = new display();
+    buttonsContainer container = new buttonsContainer(screen);
+    numberSystemPanel numbers = new numberSystemPanel(screen);
 
     // constructor
     calculator(){
-        // screen
-        // screen = new display();      
-
-        // button container
-        container = new buttonsContainer(screen); 
 
         // adding components in calculator
         add(screen);

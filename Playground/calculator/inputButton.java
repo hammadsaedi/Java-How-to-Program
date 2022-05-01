@@ -52,6 +52,7 @@ public class inputButton extends JButton {
                     screen.setText(screenText + getText());
                 }
                 
+                numberSystemPanel.screensUpdate(screen);
             }
         });
     }

@@ -3,7 +3,11 @@ package calculator;
 import java.util.*;
 
 /**
- * UnSigned Integer Support Only
+ * <h3>Number System Conversion</h3>
+ * Hexadecimal, Decimal, Octal and Binary Number System, respectively.
+ * (UnSigned Integer Support Only)
+ * @author Hammad Saeedi (@hammadsaedi  everywhere)
+ * @version 1.0
 */
 
 public class numFactory {
@@ -22,10 +26,9 @@ public class numFactory {
     
     /**
      * For Byte Data Type
-     * @param NUM String HEX or DEC or OCT or BIN
-     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively;  in case of wrong params, method will consider HEX.
-     * @return String[] contains HEX, DEC, OCT, BIN and Error Message
-     * 
+     * @param NUM HEX or DEC or OCT or BIN String
+     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively; in case of wrong type selection, method will consider HEX.
+     * @return String[] which contains HEX, DEC, OCT, BIN and Error Message (in case of wrong data type selection)
     */
     public static String[] byteModeConversion(String NUM, int type){
         // decimal in byte data type
@@ -51,8 +54,7 @@ public class numFactory {
             }
             /**
              * Byte Class has no method to convert decimal numbers to other number system
-             * As, system has already tried to store text in Byte typed variable, if successfully stored then using higher dat type's class has no problem.
-             * (If text is no byte specified, it will stores exception)
+             * As, system has already tried to store text in Byte typed variable, if successfully stored then using higher data type's class has no problem.
             */
             
             // number conversion
@@ -75,17 +77,16 @@ public class numFactory {
             System.out.print("Wrong Data Type Selection");
         }
 
-        // returning Numbers (HEX, DEC, OCT, BIN) array
+        // returning Numbers (HEX, DEC, OCT, BIN) and error message array
         return numbers;
     }
 
 
     /**
      * For Short Data Type
-     * @param NUM String HEX or DEC or OCT or BIN
-     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively;  in case of wrong params, method will consider HEX.
-     * @return String[] contains HEX, DEC, OCT, BIN and Error Message
-     * 
+     * @param NUM HEX or DEC or OCT or BIN String
+     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively; in case of wrong type selection, method will consider HEX.
+     * @return String[] which contains HEX, DEC, OCT, BIN and Error Message (in case of wrong data type selection) 
     */
     public static String[] shortModeConversion(String NUM, int type){
         // decimal in short data type
@@ -112,8 +113,7 @@ public class numFactory {
 
             /**
              * Short Class has no method to convert decimal numbers to other number system
-             * As, system has already tried to store text in Byte typed variable, if successfully stored then using higher dat type's class has no problem.
-             * (If text is no byte specified, it will stores exception)
+             * As, system has already tried to store text in Short typed variable, if successfully stored then using higher data type's class has no problem.
             */
             
             // number conversion
@@ -136,17 +136,16 @@ public class numFactory {
             System.out.print("Wrong Data Type Selection");
         }
 
-        // returning Numbers (HEX, DEC, OCT, BIN) array
+        // returning Numbers (HEX, DEC, OCT, BIN) and error message array
         return numbers;
     }
     
 
     /**
      * For Integer Data Type
-     * @param NUM String HEX or DEC or OCT or BIN
-     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively;  in case of wrong params, method will consider HEX.
-     * @return String[] contains HEX, DEC, OCT, BIN and Error Message
-     * 
+     * @param NUM HEX or DEC or OCT or BIN String
+     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively; in case of wrong type selection, method will consider HEX.
+     * @return String[] which contains HEX, DEC, OCT, BIN and Error Message (in case of wrong data type selection)
     */
     public static String[] intModeConversion(String NUM, int type){
         // decimal in integer data type
@@ -191,17 +190,16 @@ public class numFactory {
             System.out.print("Wrong Data Type Selection");
         }
 
-        // returning Numbers (HEX, DEC, OCT, BIN) array
+        // returning Numbers (HEX, DEC, OCT, BIN) and error message array
         return numbers;
     }
 
 
     /**
      * For Long Data Type
-     * @param NUM String HEX or DEC or OCT or BIN
-     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively;  in case of wrong params, method will consider HEX.
-     * @return String[] contains HEX, DEC, OCT, BIN and Error Message
-     * 
+     * @param NUM HEX or DEC or OCT or BIN String
+     * @param type 0, 1, 2, 3 for HEX, DEC, OCT, BIN respectively; in case of wrong type selection, method will consider HEX.
+     * @return String[] which contains HEX, DEC, OCT, BIN and Error Message (in case of wrong data type selection)
     */
     public static String[] longModeConversion(String NUM, int type){
         // decimal in short data type
@@ -245,7 +243,7 @@ public class numFactory {
             System.out.print("Wrong Data Type Selection");
         }
 
-        // returning Numbers (HEX, DEC, OCT, BIN) array
+        // returning Numbers (HEX, DEC, OCT, BIN) and error message array
         return numbers;
     }
 

@@ -25,6 +25,7 @@ public class buttonsContainer extends JPanel {
         // button container designing
         setBackground(Color.BLACK);
         setLayout(new GridLayout(6,3, 1, 1));
+        setOpaque(false);
 
         // default
         decMode();
