@@ -8,6 +8,7 @@ public class buttonsContainer extends JPanel {
 
     // numeric buttons
     static inputButton[] button = new inputButton[16]; 
+    inputButton signButton;
     // color
     
     // constructor
@@ -22,6 +23,9 @@ public class buttonsContainer extends JPanel {
             add(button[i]);
         }
         
+        signButton = new inputButton("-", screen);
+        add(signButton);
+
         // button container designing
         setBackground(Color.BLACK);
         setLayout(new GridLayout(6,3, 1, 1));

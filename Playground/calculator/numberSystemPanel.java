@@ -57,7 +57,6 @@ public class numberSystemPanel extends JPanel {
             add(Field[i]);
         }
 
-
         // addMouseListener(new java.awt.event.MouseAdapter() {
         //     public void mouseEntered(java.awt.event.MouseEvent evt) {
         //         setForeground(Color.BLACK);
@@ -77,19 +76,11 @@ public class numberSystemPanel extends JPanel {
                 // HEX Buttons Setting
                 buttonsContainer.hexMode();
 
-                // Decimal field text
-                decText = Field[1].getText();
-                
-                // Numbers System Conversions
-                numbers = numFactory.intModeConversion(decText, 1);
-                
-                // Setting converted text to screens
-                for (int i = 0; i < Field.length; i++){
-                    Field[i].setText(numbers[i]);
-                }
-                
-                // Display Screen Text
-                screen.setText(numbers[0]); // setting HEX Text   
+                // Changing screen text to BIN Formate
+                screen.setText(Field[0].getText());
+
+                // Updating screen
+                screensUpdate(screen);
             }
         });
 
@@ -99,19 +90,11 @@ public class numberSystemPanel extends JPanel {
                 // DEC Buttons Setting
                 buttonsContainer.decMode();
 
-                // Decimal field text
-                decText = Field[1].getText();
-                
-                // Numbers System Conversions
-                numbers = numFactory.intModeConversion(decText, 1);
-                
-                // Setting converted text to screens
-                for (int i = 0; i < Field.length; i++){
-                    Field[i].setText(numbers[i]);
-                }
-                
-                // Display Screen Text
-                screen.setText(numbers[1]); // setting DEC Text   
+                // Changing screen text to DEC Formate
+                screen.setText(Field[1].getText());
+
+                // Updating screen
+                screensUpdate(screen);
             }
         });
 
@@ -121,19 +104,11 @@ public class numberSystemPanel extends JPanel {
                 // OCT Buttons Setting
                 buttonsContainer.octMode();
 
-                // Decimal field text
-                decText = Field[1].getText();
-                
-                // Numbers System Conversions
-                numbers = numFactory.intModeConversion(decText, 1);
-                
-                // Setting converted text to screens
-                for (int i = 0; i < Field.length; i++){
-                    Field[i].setText(numbers[i]);
-                }
-                
-                // Display Screen Text
-                screen.setText(numbers[2]); // setting OCT Text   
+                // Changing screen text to OCT Formate
+                screen.setText(Field[2].getText());
+
+                // Updating screen
+                screensUpdate(screen);
             }
         });
 
@@ -143,19 +118,11 @@ public class numberSystemPanel extends JPanel {
                 // BIN Buttons Setting
                 buttonsContainer.binMode();
 
-                // Decimal field text
-                decText = Field[1].getText();
-                
-                // Numbers System Conversions
-                numbers = numFactory.intModeConversion(decText, 1);
-                
-                // Setting converted text to screens
-                for (int i = 0; i < Field.length; i++){
-                    Field[i].setText(numbers[i]);
-                }
-                
-                // Display Screen Text
-                screen.setText(numbers[3]); // setting BIN Text   
+                // Changing screen text to BIN Formate
+                screen.setText(Field[3].getText());
+
+                // Updating screen
+                screensUpdate(screen);
             }
         });
 
@@ -186,7 +153,6 @@ public class numberSystemPanel extends JPanel {
         // }
 
         setLayout(new GridLayout(4,2, 1, 1));
-
  
     }
 
@@ -194,28 +160,59 @@ public class numberSystemPanel extends JPanel {
     public static void screensUpdate(JTextField screen){
         // text of display screen
         String screenText = screen.getText();
+        String dataType = dataTypePanel.getInputSelection();
         int numberSystem = 0;
 
-        if (buttonGroup.getSelection().getActionCommand() == "HEX") {
+        if (getSelection() == "HEX") {
             numberSystem = 0;
-        } else if (buttonGroup.getSelection().getActionCommand() == "DEC"){
+        } else if (getSelection() == "DEC"){
             numberSystem = 1;            
-        } else if (buttonGroup.getSelection().getActionCommand() == "OCT"){
+        } else if (getSelection() == "OCT"){
             numberSystem = 2;
-        } else if (buttonGroup.getSelection().getActionCommand() == "BIN"){
+        } else if (getSelection() == "BIN"){
             numberSystem = 3;
         }
 
+        // Selected Field Text
+        // screenText  = Field[numberSystem].getText();
+
         // number conversion
-        numbers = numFactory.intModeConversion(screenText, numberSystem);
+        if (dataType == "Byte") {
+            numbers = numFactory.byteModeConversion(screenText, numberSystem);
+            System.out.println("B");
+        } else if (dataType == "Short") { 
+            numbers = numFactory.shortModeConversion(screenText, numberSystem);
+            System.out.println("S");
+        } else if (dataType == "Integer") { 
+            numbers = numFactory.intModeConversion(screenText, numberSystem);
+            System.out.println("I");
+        } else if (dataType == "Long") { 
+            numbers = numFactory.longModeConversion(screenText, numberSystem);
+        } else if (dataType == "Float") { 
+            numbers = numFactory.intModeConversion(screenText, numberSystem);
+        } else if (dataType == "Double") { 
+            numbers = numFactory.intModeConversion(screenText, numberSystem);
+        }
 
         // setting converted text to screens
         for (int i = 0; i < Field.length; i++){
             Field[i].setText(numbers[i]);
         }
-        
+
         // Display Screen Text
         screen.setText(numbers[numberSystem]); // setting HEX Text
   
+    }
+
+    // Method to return Action command of selected radio button
+    public static String getSelection(){        
+        // returning action command of selected button
+        return buttonGroup.getSelection().getActionCommand();
+    }
+
+    // Method to return text of decimal screen panel
+    public static String getDECString(){
+        // returning action command of selected button
+        return Field[1].getText();
     }
 }

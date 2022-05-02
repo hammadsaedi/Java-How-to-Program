@@ -43,15 +43,28 @@ public class inputButton extends JButton {
                 // default text
                 String defaultText = buttonsContainer.button[0].getText();
 
-                if (screenText.equals(defaultText)) {
-                    // writing button text to screen
-                    screen.setText(getText());
-                } 
-                else {
-                    // concatenating button's text to existing screen text
-                    screen.setText(screenText + getText());
+                if (getText() == "-") { // For Negative Button
+                    if (screenText.contains(getText())){ // already negative
+                        screen.setText(screenText.replace("-", ""));  // removes negative sign
+                    } else {
+                        if (screenText.equals(defaultText)) { 
+                            // writing button text to screen
+                            screen.setText(defaultText); // Zero does not have sign
+                        } else {
+                            // negating the screen
+                            screen.setText("-" + screenText);
+                        }
+                    }  
+                } else {
+                    if (screenText.equals(defaultText)) {
+                        // writing button text to screen
+                        screen.setText(getText());
+                    } 
+                    else {
+                        // concatenating button's text to existing screen text
+                        screen.setText(screenText + getText());
+                    }
                 }
-                
                 numberSystemPanel.screensUpdate(screen);
             }
         });

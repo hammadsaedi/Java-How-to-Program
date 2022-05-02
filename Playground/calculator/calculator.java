@@ -8,18 +8,21 @@ public class calculator extends JFrame{
     display screen = new display();
     buttonsContainer container = new buttonsContainer(screen);
     numberSystemPanel numbers = new numberSystemPanel(screen);
+    dataTypePanel menuBar = new dataTypePanel(); 
 
     // constructor
     calculator(){
 
         // adding components in calculator
+        add(menuBar);
         add(screen);
         add(numbers);
         add(container);
 
         
         // absolute sizing
-        screen.setBounds(0, 0, 330, 50);
+        menuBar.setBounds(0, 0, 330, 20);
+        screen.setBounds(0, 20, 330, 30);
         numbers.setBounds(0, 55, 330, 125);
         container.setBounds(0, 180, 330, 300);
 
