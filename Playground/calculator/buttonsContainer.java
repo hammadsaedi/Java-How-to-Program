@@ -8,7 +8,7 @@ public class buttonsContainer extends JPanel {
 
     // numeric buttons
     static inputButton[] button = new inputButton[16]; 
-    inputButton signButton;
+    static inputButton signButton, decimalButton;
     // color
     
     // constructor
@@ -25,6 +25,8 @@ public class buttonsContainer extends JPanel {
         
         signButton = new inputButton("-", screen);
         add(signButton);
+        decimalButton = new inputButton(".", screen);
+        add(decimalButton);
 
         // button container designing
         setBackground(Color.BLACK);
@@ -33,6 +35,7 @@ public class buttonsContainer extends JPanel {
 
         // default
         decMode();
+        intMode();
     }
 
     public static void hexMode(){
@@ -66,4 +69,11 @@ public class buttonsContainer extends JPanel {
         }
     }
 
+    public static void floatMode(){
+        decimalButton.setEnabled(true);
+    }
+
+    public static void intMode(){
+        decimalButton.setEnabled(false);
+    }
 }

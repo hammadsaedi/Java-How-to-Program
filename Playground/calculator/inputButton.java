@@ -55,6 +55,13 @@ public class inputButton extends JButton {
                             screen.setText("-" + screenText);
                         }
                     }  
+                } else if (getText() == ".") { // For Decimal Point
+                    if (screenText.contains(getText())){ // already contains
+                        screen.setText(screenText);  // set same text
+                    } else {
+                        // concatenating button's text to existing screen text
+                        screen.setText(screenText + getText());
+                    }  
                 } else {
                     if (screenText.equals(defaultText)) {
                         // writing button text to screen

@@ -8,7 +8,7 @@ public class calculator extends JFrame{
     display screen = new display();
     buttonsContainer container = new buttonsContainer(screen);
     numberSystemPanel numbers = new numberSystemPanel(screen);
-    dataTypePanel menuBar = new dataTypePanel(); 
+    dataTypePanel menuBar = new dataTypePanel(screen); 
 
     // constructor
     calculator(){

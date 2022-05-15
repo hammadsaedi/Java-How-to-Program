@@ -10,7 +10,7 @@ public class dataTypePanel extends JMenuBar{
 
 
     // constructor
-    dataTypePanel(){
+    dataTypePanel(JTextField screen){
         // Input Type Menu Items
         inputType[0] = new JRadioButtonMenuItem("Byte");
         inputType[1] = new JRadioButtonMenuItem("Short");
@@ -59,6 +59,33 @@ public class dataTypePanel extends JMenuBar{
         // adding menu in menu bar
         add(inputMenu);
         add(outputMenu);
+
+        // Integer Mode
+        for (int i = 0; i < inputType.length - 2; i++){
+            inputType[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    // Integer Mode
+                    buttonsContainer.intMode();
+    
+                    // Updating screen
+                    numberSystemPanel.screensUpdate(screen);
+                }
+            });
+        }
+
+        // Integer Mode
+        for (int i = inputType.length - 1; i > inputType.length - 3; i--){
+            inputType[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    // Integer Mode
+                    buttonsContainer.floatMode();
+    
+                    // Updating screen
+                    numberSystemPanel.screensUpdate(screen);
+                }
+            });
+        }
+        
         
         
     }

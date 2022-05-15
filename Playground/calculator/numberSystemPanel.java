@@ -76,7 +76,7 @@ public class numberSystemPanel extends JPanel {
                 // HEX Buttons Setting
                 buttonsContainer.hexMode();
 
-                // Changing screen text to BIN Formate
+                // Changing screen text to HEX Formate
                 screen.setText(Field[0].getText());
 
                 // Updating screen
@@ -128,6 +128,8 @@ public class numberSystemPanel extends JPanel {
 
 
 
+
+
         // HEX.setBounds(0, 50, 50, 50);
         // hexField.setBounds(0, 50, 300, 50);
         // DEC.setBounds(0, 100, 50, 50);
@@ -138,14 +140,12 @@ public class numberSystemPanel extends JPanel {
         // binField.setBounds(0, 200, 300, 50);
 
 
-        // System.out.print(screenText);
 
 
         // if (NUM[0].isSelected()) {
         //     // Screen Text (that's HEX)
         //     // String screenText = calculator.screen.getText();
 
-        //     System.out.print(screenText);
 
         //     // Converting into Decimal
         //     String DEC = Integer.toString(Integer.parseInt(screenText,16));
@@ -161,37 +161,33 @@ public class numberSystemPanel extends JPanel {
         // text of display screen
         String screenText = screen.getText();
         String dataType = dataTypePanel.getInputSelection();
-        int numberSystem = 0;
+        int radix = 16, numberSystem = 0;
 
         if (getSelection() == "HEX") {
             numberSystem = 0;
+            radix = 16;
         } else if (getSelection() == "DEC"){
-            numberSystem = 1;            
+            numberSystem = 1;
+            radix = 10;        
         } else if (getSelection() == "OCT"){
             numberSystem = 2;
+            radix = 8;
         } else if (getSelection() == "BIN"){
             numberSystem = 3;
+            radix = 2;
         }
 
         // Selected Field Text
         // screenText  = Field[numberSystem].getText();
 
-        // number conversion
-        if (dataType == "Byte") {
-            numbers = numFactory.byteModeConversion(screenText, numberSystem);
-            System.out.println("B");
-        } else if (dataType == "Short") { 
-            numbers = numFactory.shortModeConversion(screenText, numberSystem);
-            System.out.println("S");
-        } else if (dataType == "Integer") { 
-            numbers = numFactory.intModeConversion(screenText, numberSystem);
-            System.out.println("I");
-        } else if (dataType == "Long") { 
-            numbers = numFactory.longModeConversion(screenText, numberSystem);
-        } else if (dataType == "Float") { 
-            numbers = numFactory.intModeConversion(screenText, numberSystem);
-        } else if (dataType == "Double") { 
-            numbers = numFactory.intModeConversion(screenText, numberSystem);
+        if ((dataType.equals("Float") || dataType.equals("Double")) && !screen.getText().contains(".")){
+            if (dataType.equals("Float")) {
+                numbers = numberSystemUnit.conversion(screenText, "Integer", radix);
+            } else {
+                numbers = numberSystemUnit.conversion(screenText, "Long", radix);
+            }
+        } else {
+            numbers = numberSystemUnit.conversion(screenText, dataType, radix); 
         }
 
         // setting converted text to screens
@@ -200,8 +196,7 @@ public class numberSystemPanel extends JPanel {
         }
 
         // Display Screen Text
-        screen.setText(numbers[numberSystem]); // setting HEX Text
-  
+        screen.setText(numbers[numberSystem]); // setting HEX Text  
     }
 
     // Method to return Action command of selected radio button
