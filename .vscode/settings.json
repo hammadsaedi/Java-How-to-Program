@@ -1,18 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "Lab Assignmnet/5",
-        "Lab Assignmnet",
-        "Practice/Array",
-        "Lab Assignmnet/5/Examples",
-        "Playground",
-        "Playground\\Practice",
-        "Playground\\Practice\\Array",
-        "Playground\\Practice\\Matrices",
-        "Lab Tasks"
+        "."
     ],
     "cSpell.words": [
         "Hammad",
-        "hammadsaedi",
-        "Saeedi"
+        "Saeedi",
+        "hammadsaedi"
     ]
 }
